@@ -77,6 +77,7 @@ public:
         RangeFinder_TYPE_BenewakeTFminiPlus = 25,
         RangeFinder_TYPE_Lanbao = 26,
         RangeFinder_TYPE_BenewakeTF03 = 27,
+        RangeFinder_TYPE_FM24= 57
     };
 
     enum RangeFinder_Function {

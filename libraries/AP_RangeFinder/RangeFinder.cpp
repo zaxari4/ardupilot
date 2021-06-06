@@ -28,6 +28,7 @@
 #endif
 #include "AP_RangeFinder_MAVLink.h"
 #include "AP_RangeFinder_LeddarOne.h"
+#include "AP_RangeFinder_FM24.h"
 #include "AP_RangeFinder_uLanding.h"
 #include "AP_RangeFinder_TeraRangerI2C.h"
 #include "AP_RangeFinder_VL53L0X.h"
@@ -420,6 +421,11 @@ void RangeFinder::detect_instance(uint8_t instance, uint8_t& serial_instance)
     case RangeFinder_TYPE_ULANDING:
         if (AP_RangeFinder_uLanding::detect(serial_instance)) {
             drivers[instance] = new AP_RangeFinder_uLanding(state[instance], params[instance], serial_instance++);
+        }
+        break;
+    case RangeFinder_TYPE_FM24:
+        if (AP_RangeFinder_FM24::detect(serial_instance)) {
+            drivers[instance] = new AP_RangeFinder_FM24(state[instance], params[instance], serial_instance++);
         }
         break;
 #if (CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_BEBOP || \
